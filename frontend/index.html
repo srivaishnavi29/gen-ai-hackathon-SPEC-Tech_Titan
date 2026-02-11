@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 LearnPath AI | Master In-Demand Skills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --secondary: #0ea5e9;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark-900: #0a0a0f;
+            --dark-800: #13131a;
+            --dark-700: #1e1e29;
+            --dark-600: #2a2a3a;
+            --dark-500: #37374a;
+            --light-100: #f9fafb;
+            --light-200: #f3f4f6;
+            --light-300: #e5e7eb;
+            --text-primary: #ffffff;
+            --text-secondary: #a7a7c2;
+            --text-tertiary: #71718c;
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --shadow-sm: 0 4px 6px #bdda16dd;
+            --shadow-md: 0 10px 25px rgba(22, 196, 235, 0.841);
+            --shadow-lg: 0 20px 50px rgba(137, 9, 9, 0.25);
+            --shadow-xl: 0 30px 80px rgba(158, 9, 118, 0.35);
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --glass-bg: rgba(30, 30, 46, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f1b 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        /* Subtle animated background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(124, 58, 237, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 75%, rgba(14, 165, 233, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.04) 0%, transparent 35%);
+            z-index: -2;
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+            25% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+            50% { transform: translateY(-15px) translateX(-15px) scale(0.95); }
+            75% { transform: translateY(20px) translateX(10px) scale(1.05); }
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Header with depth */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+        
+        .logo-icon {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            animation: pulseLogo 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.5)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(14, 165, 233, 0.7)); }
+        }
+        
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--light-100), var(--light-200), #d1d5db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            letter-spacing: -1.2px;
+            line-height: 1.15;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.45rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 24px auto 0;
+            line-height: 1.65;
+            font-weight: 400;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .subtitle::before,
+        .subtitle::after {
+            content: """;
+            font-family: 'Manrope', serif;
+            font-size: 2.8rem;
+            color: rgba(124, 58, 237, 0.25);
+            position: absolute;
+            line-height: 1;
+        }
+        
+        .subtitle::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .subtitle::after {
+            content: """;
+            bottom: -40px;
+            right: 0;
+            transform: rotate(180deg);
+        }
+        
+        /* Glassmorphism card */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-normal);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 10;
+            padding: 40px;
+        }
+        
+        /* Form section */
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-100);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .form-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--light-200);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            padding-left: 4px;
+        }
+        
+        .form-group label::before {
+            content: "";
+            position: absolute;
+            left: -18px;
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+        
+        .form-control {
+            background: rgba(26, 26, 46, 0.85);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-md);
+            padding: 16px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: var(--light-100);
+            transition: var(--transition-fast);
+            width: 100%;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+            background: rgba(35, 35, 55, 0.95);
+        }
+        
+        .form-control option {
+            background: var(--dark-800);
+            color: var(--light-100);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 18px 32px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            border-radius: var(--border-radius-lg);
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition-normal);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            letter-spacing: -0.5px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 12px;
+            z-index: 20;
+        }
+        
+        .generate-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.8s;
+            z-index: 1;
+        }
+        
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.6);
+        }
+        
+        .generate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+        }
+        
+        .generate-btn i {
+            font-size: 1.6rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .generate-btn span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Progress tracker */
+        .progress-section {
+            margin: 40px 0;
+            display: none;
+        }
+        
+        .progress-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .progress-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--light-100), #e2e8f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+        
+        .progress-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .progress-container {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: var(--border-radius-lg);
+            padding: 8px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .progress-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(124, 58, 237, 0.15) 0%, 
+                rgba(14, 165, 233, 0.15) 50%, 
+                rgba(124, 58, 237, 0.15) 100%);
+            animation: shimmer 2.5s infinite;
+            z-index: 0;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .progress-bar-bg {
+            background: rgba(35, 35, 55, 0.9);
+            border-radius: var(--border-radius-md);
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: var(--border-radius-md);
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.25) 0%, 
+                rgba(255, 255, 255, 0) 50%, 
+                rgba(255, 255, 255, 0.25) 100%);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding: 0 8px;
+        }
+        
+        .progress-count {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .progress-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .progress-hint {
+            background: rgba(16, 185, 129, 0.12);
+            border-left: 3px solid var(--success);
+            padding: 16px;
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Curriculum display */
+        .result-section {
+            display: none;
+            animation: fadeIn 0.7s ease-out;
+        }
+        
+        .result-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .result-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--light-100), #e2e8f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.25;
+            max-width: 800px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--success), #0ea5e9);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition-normal);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .download-btn:hover::before {
+            left: 100%;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.45);
+        }
+        
+        .download-btn:disabled {
+            background: var(--dark-500);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            color: var(--text-tertiary);
+        }
+        
+        .overview-box {
+            background: rgba(20, 20, 35, 0.85);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            padding: 28px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .overview-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08) 0%, transparent 60%);
+            z-index: 0;
+        }
+        
+        .overview-box p {
+            position: relative;
+            z-index: 10;
+            line-height: 1.75;
+            color: var(--light-200);
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+        
+        /* Semester cards with depth */
+        .semester-card {
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            margin-bottom: 35px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-normal);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .semester-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            z-index: 10;
+        }
+        
+        .semester-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .semester-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+            border-color: rgba(124, 58, 237, 0.4);
+        }
+        
+        .semester-card:hover::before {
+            width: 8px;
+        }
+        
+        .semester-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--light-100);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            position: relative;
+            z-index: 10;
+            padding-left: 16px;
+        }
+        
+        .semester-title::before {
+            content: "📅";
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .semester-title::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 16px;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 1px;
+        }
+        
+        /* Course cards */
+        .course-card {
+            background: rgba(35, 35, 55, 0.8);
+            border-radius: var(--border-radius-md);
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .course-card:hover {
+            border-color: rgba(14, 165, 233, 0.4);
+            transform: translateX(8px);
+            background: rgba(40, 40, 65, 0.9);
+        }
+        
+        .course-name {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--light-100);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-name::before {
+            content: "🎯";
+            font-size: 1.8rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 24px;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .course-meta i {
+            color: var(--primary-light);
+            font-size: 1.35rem;
+        }
+        
+        .topics-list {
+            margin-top: 22px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .topics-list h4 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.35rem;
+            color: var(--light-200);
+            margin-bottom: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 6px;
+        }
+        
+        .topics-list h4::before {
+            content: "📚";
+            font-size: 1.6rem;
+        }
+        
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+        
+        .topic-item:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding-left: 6px;
+        }
+        
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-checkbox {
+            width: 26px;
+            height: 26px;
+            margin-right: 18px;
+            cursor: pointer;
+            accent-color: var(--success);
+            border-radius: 8px;
+            border: 2px solid var(--success);
+            transition: var(--transition-fast);
+            position: relative;
+            transform: scale(1.1);
+        }
+        
+        .topic-checkbox:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+        }
+        
+        .topic-checkbox:checked {
+            background-color: var(--success);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+            transform: scale(1.15);
+        }
+        
+        .topic-label {
+            font-size: 1.18rem;
+            color: var(--light-200);
+            flex: 1;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            padding: 4px 0;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .topic-label:hover {
+            color: var(--light-100);
+        }
+        
+        .topic-label.completed {
+            color: var(--success);
+            text-decoration: line-through;
+            opacity: 0.92;
+            font-weight: 600;
+        }
+        
+        .topic-label.completed::after {
+            content: " ✅";
+            margin-left: 12px;
+            color: var(--success);
+            font-weight: bold;
+            animation: checkmarkPop 0.45s ease-out forwards;
+        }
+        
+        @keyframes checkmarkPop {
+            0% { transform: scale(0.3) rotate(-45deg); opacity: 0; }
+            70% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        
+        .project-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(14, 165, 233, 0.1));
+            border-radius: var(--border-radius-md);
+            padding: 26px;
+            margin-top: 22px;
+            border-left: 4px solid var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .project-box:hover {
+            border-left-color: #0ea5e9;
+            transform: translateX(4px);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(14, 165, 233, 0.15));
+        }
+        
+        .project-box h4 {
+            color: var(--light-100);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .project-box h4::before {
+            content: "💡";
+            font-size: 1.8rem;
+        }
+        
+        .project-box p {
+            color: var(--light-200);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 10;
+            font-weight: 400;
+        }
+        
+        /* Capstone section */
+        .capstone-section {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(236, 72, 153, 0.1));
+            border-radius: var(--border-radius-xl);
+            padding: 42px;
+            margin-top: 45px;
+            border-left: 6px solid var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .capstone-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .capstone-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.1) 0%, transparent 60%);
+            z-index: 0;
+        }
+        
+        .capstone-section h2 {
+            color: var(--light-100);
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.3rem;
+            margin-bottom: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .capstone-section h2::before {
+            content: "🏆";
+            font-size: 2.4rem;
+        }
+        
+        .capstone-section p {
+            color: var(--light-200);
+            line-height: 1.8;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 10;
+            font-weight: 400;
+            max-width: 900px;
+        }
+        
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--primary-light);
+            font-size: 1.4rem;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .spinner {
+            border: 6px solid rgba(124, 58, 237, 0.2);
+            border-top: 6px solid var(--primary-light);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto 35px;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+            position: relative;
+        }
+        
+        .spinner::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 4px solid rgba(14, 165, 233, 0.3);
+            border-radius: 50%;
+            animation: spinReverse 1.5s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes spinReverse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+        
+        /* Error state */
+        .error-box {
+            background: rgba(220, 38, 38, 0.12);
+            border-left: 4px solid var(--danger);
+            padding: 30px;
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            margin: 35px 0;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            position: relative;
+        }
+        
+        .error-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(239, 68, 68, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .error-box h3 {
+            color: #fecaca;
+            margin-bottom: 16px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .error-box h3::before {
+            content: "❌";
+            font-size: 2.2rem;
+        }
+        
+        .error-box p {
+            color: #fca5a5;
+            line-height: 1.75;
+            font-size: 1.15rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .error-box ul {
+            margin-left: 30px;
+            margin-top: 16px;
+            color: #fca5a5;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .error-box li {
+            margin-bottom: 10px;
+            line-height: 1.65;
+            padding-left: 8px;
+            border-left: 2px solid var(--danger);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 35px 20px 50px;
+            color: var(--text-tertiary);
+            font-size: 1.1rem;
+            margin-top: 20px;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        footer p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        footer i {
+            color: var(--accent);
+            animation: pulseHeart 1.5s infinite;
+        }
+        
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Skill custom input */
+        .skill-custom {
+            margin-top: 14px;
+            display: none;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 3.1rem;
+            }
+            
+            .subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .card-content {
+                padding: 30px 24px;
+            }
+            
+            .form-title {
+                font-size: 1.65rem;
+            }
+            
+            .semester-title {
+                font-size: 1.85rem;
+            }
+            
+            .course-name {
+                font-size: 1.45rem;
+            }
+            
+            .result-title {
+                font-size: 2.2rem;
+            }
+            
+            .progress-title {
+                font-size: 1.85rem;
+            }
+            
+            .progress-count {
+                font-size: 1.6rem;
+            }
+            
+            .capstone-section {
+                padding: 32px 24px;
+            }
+            
+            .capstone-section h2 {
+                font-size: 2rem;
+            }
+            
+            .capstone-section p {
+                font-size: 1.15rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1.15rem;
+                padding: 0 10px;
+            }
+            
+            .logo-icon {
+                font-size: 2.6rem;
+            }
+            
+            .card-content {
+                padding: 24px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .generate-btn {
+                font-size: 1.2rem;
+                padding: 16px;
+            }
+            
+            .semester-title {
+                font-size: 1.65rem;
+            }
+            
+            .course-name {
+                font-size: 1.35rem;
+            }
+            
+            .course-meta {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+            
+            .topic-checkbox {
+                width: 24px;
+                height: 24px;
+                margin-right: 14px;
+            }
+            
+            .topic-label {
+                font-size: 1.08rem;
+            }
+            
+            .result-title {
+                font-size: 1.9rem;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px;
+                font-size: 1.1rem;
+            }
+            
+            .progress-title {
+                font-size: 1.65rem;
+            }
+            
+            .progress-count {
+                font-size: 1.45rem;
+            }
+            
+            .overview-box,
+            .capstone-section {
+                padding: 24px;
+            }
+            
+            .capstone-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            footer {
+                padding: 25px 15px 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Animation for new elements */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .semester-card {
+            animation: slideIn 0.5s ease-out forwards;
+            animation-delay: calc(var(--i) * 0.15s);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles for depth -->
+    <div class="particle" style="width: 80px; height: 80px; top: 15%; left: 8%; animation-delay: 0s;"></div>
+    <div class="particle" style="width: 50px; height: 50px; top: 65%; left: 92%; animation-delay: 1s;"></div>
+    <div class="particle" style="width: 120px; height: 120px; top: 85%; left: 15%; animation-delay: 2s;"></div>
+    <div class="particle" style="width: 60px; height: 60px; top: 40%; left: 88%; animation-delay: 3s;"></div>
+    <div class="particle" style="width: 90px; height: 90px; top: 10%; left: 85%; animation-delay: 4s;"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+            <h1>LearnPath AI</h1>
+            <p class="subtitle">Master in-demand tech skills with personalized AI-generated learning paths. Track progress, build projects, and achieve career goals with confidence.</p>
+        </header>
+        
+        <div class="card form-section">
+            <div class="card-content">
+                <h2 class="form-title"><i class="fas fa-sliders-h"></i> Customize Your Learning Path</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="skillSelect"><i class="fas fa-bullseye"></i> Skill to Master</label>
+                        <select id="skillSelect" class="form-control">
+                            <option value="Web Development">Web Development</option>
+                            <option value="Machine Learning Engineering" selected>Machine Learning Engineering</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="DevOps">DevOps & SRE</option>
+                            <option value="Game Development">Game Development</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="IoT (Internet of Things)">IoT & Embedded Systems</option>
+                            <option value="Natural Language Processing">Natural Language Processing</option>
+                            <option value="Computer Vision">Computer Vision</option>
+                            <option value="Blockchain Development">Blockchain & Web3</option>
+                            <option value="AR/VR Development">AR/VR Development</option>
+                            <option value="Quantum Computing">Quantum Computing</option>
+                            <option value="Data Engineering">Data Engineering</option>
+                            <option value="MLOps">MLOps</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Robotics">Robotics</option>
+                            <option value="Big Data Analytics">Big Data Analytics</option>
+                            <option value="Network Engineering">Network Engineering</option>
+                            <option value="Software Architecture">Software Architecture</option>
+                            <option value="Quality Assurance">QA & Testing</option>
+                            <option value="Technical Writing">Technical Writing</option>
+                            <option value="Product Management">Product Management</option>
+                            <option value="Data Visualization">Data Visualization</option>
+                            <option value="Bioinformatics">Bioinformatics</option>
+                            <option value="FinTech Development">FinTech Development</option>
+                            <option value="HealthTech">HealthTech Solutions</option>
+                            <option value="Other">Other (specify below)</option>
+                        </select>
+                        <div class="skill-custom">
+                            <input type="text" id="customSkill" class="form-control" placeholder="Enter your skill...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="level"><i class="fas fa-chart-line"></i> Proficiency Level</label>
+                        <select id="level" class="form-control">
+                            <option>Beginner</option>
+                            <option selected>Intermediate</option>
+                            <option>Advanced</option>
+                            <option>Masters</option>
+                            <option>PhD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="semesters"><i class="fas fa-calendar-alt"></i> Duration (Semesters)</label>
+                        <input type="number" id="semesters" class="form-control" value="1" min="1" max="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="weekly_hours"><i class="fas fa-clock"></i> Weekly Commitment (Hours)</label>
+                        <input type="number" id="weekly_hours" class="form-control" value="5" min="3" max="40">
+                    </div>
+                    <input type="hidden" id="industry" value="Technology">
+                </div>
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-rocket"></i>
+                    <span>Generate My Learning Path</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Progress Tracker -->
+        <div class="card progress-section" id="progressSection">
+            <div class="card-content">
+                <div class="progress-header">
+                    <h3 class="progress-title">
+                        <i class="fas fa-trophy"></i>
+                        Your Learning Journey
+                    </h3>
+                    <p class="progress-subtitle">Track your progress and celebrate milestones as you master new skills</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <div class="progress-count" id="progressCount">0/0</div>
+                    <div class="progress-label" id="progressLabel">topics completed (0%)</div>
+                </div>
+                <div class="progress-hint">
+                    <i class="fas fa-check-circle"></i>
+                    Check topics as you complete them — progress saves automatically in your browser
+                </div>
+            </div>
+        </div>
+        
+        <div class="card result-section" id="resultSection">
+            <div class="card-content">
+                <div class="result-header">
+                    <h2 class="result-title" id="programTitle">Your Personalized Learning Path</h2>
+                    <button class="download-btn" id="downloadBtn" disabled>
+                        <i class="fas fa-download"></i>
+                        <span>Download as PDF</span>
+                    </button>
+                </div>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>
+                <i class="fas fa-heart"></i>
+                Crafted with precision using Flask & Ollama • Your progress saves locally • No account required
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // DOM Elements
+        const skillSelect = document.getElementById('skillSelect');
+        const customSkillDiv = document.querySelector('.skill-custom');
+        const customSkillInput = document.getElementById('customSkill');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultSection = document.getElementById('resultSection');
+        const resultContent = document.getElementById('resultContent');
+        const programTitle = document.getElementById('programTitle');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressSection = document.getElementById('progressSection');
+        const progressFill = document.getElementById('progressFill');
+        const progressCount = document.getElementById('progressCount');
+        const progressLabel = document.getElementById('progressLabel');
+        let currentCurriculum = null;
+        const STORAGE_KEY_PREFIX = 'curriculum_tracker_';
+
+        // Toggle custom skill input
+        skillSelect.addEventListener('change', () => {
+            customSkillDiv.style.display = (skillSelect.value === 'Other') ? 'block' : 'none';
+        });
+
+        // Generate curriculum
+        generateBtn.addEventListener('click', async () => {
+            let skill = skillSelect.value;
+            if (skill === 'Other' && customSkillInput.value.trim()) {
+                skill = customSkillInput.value.trim();
+            }
+
+            // Show loading state
+            resultSection.classList.remove('active');
+            resultContent.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p><i class="fas fa-brain"></i> Crafting your personalized learning path...<br>
+                    <small>AI is designing your curriculum (5-10 seconds)</small></p>
+                </div>
+            `;
+            resultSection.classList.add('active');
+            progressSection.classList.remove('active');
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Generating...</span>';
+
+            const data = {
+                skill: skill,
+                level: document.getElementById('level').value,
+                semesters: parseInt(document.getElementById('semesters').value),
+                weekly_hours: parseInt(document.getElementById('weekly_hours').value),
+                industry: document.getElementById('industry').value
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/generate-curriculum', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                if (result.success && result.curriculum) {
+                    currentCurriculum = initializeProgress(result.curriculum);
+                    renderCurriculum(currentCurriculum);
+                    progressSection.classList.add('active');
+                    updateProgress();
+                } else {
+                    showError(result.error || 'Failed to generate curriculum. Please try again.');
+                }
+            } catch (error) {
+                showError(`Connection error: ${error.message}.<br>Make sure Flask server is running at http://localhost:5000`);
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = '<i class="fas fa-rocket"></i> <span>Generate My Learning Path</span>';
+            }
+        });
+
+        // Initialize curriculum with progress tracking
+        function initializeProgress(curriculum) {
+            const cloned = JSON.parse(JSON.stringify(curriculum));
+            
+            cloned.semesters.forEach(semester => {
+                semester.courses.forEach(course => {
+                    if (Array.isArray(course.topics)) {
+                        course.topics = course.topics.map(topic => {
+                            const name = typeof topic === 'string' ? topic : (topic.name || topic.toString());
+                            return { name, completed: false };
+                        });
+                    }
+                });
+            });
+
+            // Load saved progress
+            const key = `${STORAGE_KEY_PREFIX}${cloned.program_title.replace(/\s+/g, '_')}`;
+            const saved = localStorage.getItem(key);
+            if (saved) {
+                try {
+                    const savedData = JSON.parse(saved);
+                    savedData.semesters.forEach((savedSem, sIdx) => {
+                        const currSem = cloned.semesters[sIdx];
+                        if (currSem && savedSem.courses) {
+                            savedSem.courses.forEach((savedCourse, cIdx) => {
+                                const currCourse = currSem.courses[cIdx];
+                                if (currCourse && savedCourse.topics) {
+                                    savedCourse.topics.forEach((savedTopic, tIdx) => {
+                                        if (currCourse.topics[tIdx]) {
+                                            currCourse.topics[tIdx].completed = savedTopic.completed || false;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                } catch (e) {
+                    console.error("Error loading progress:", e);
+                }
+            }
+            
+            return cloned;
+        }
+
+        // Render curriculum with checkboxes
+        function renderCurriculum(curriculum) {
+            programTitle.textContent = curriculum.program_title || 'Your Personalized Learning Path';
+            let html = '';
+            
+            if (curriculum.overview) {
+                html += `<div class="overview-box"><p>${curriculum.overview}</p></div>`;
+            }
+            
+            if (curriculum.semesters && curriculum.semesters.length > 0) {
+                curriculum.semesters.forEach((semester, sIdx) => {
+                    if (!semester.courses) return;
+                    
+                    html += `
+                        <div class="semester-card" style="--i: ${sIdx};">
+                            <h3 class="semester-title">Semester ${semester.semester}</h3>
+                    `;
+                    
+                    semester.courses.forEach((course, cIdx) => {
+                        html += `
+                            <div class="course-card">
+                                <h4 class="course-name">${course.course_name || 'Course'}</h4>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-hourglass-half"></i> ${course.hours_per_week || 0} hrs/week</span>
+                                </div>
+                        `;
+                        
+                        if (course.topics && course.topics.length > 0) {
+                            html += `<div class="topics-list"><h4>Key Topics</h4>`;
+                            course.topics.forEach((topic, tIdx) => {
+                                const topicId = `topic_${sIdx}_${cIdx}_${tIdx}`;
+                                html += `
+                                    <div class="topic-item">
+                                        <input type="checkbox" class="topic-checkbox" id="${topicId}"
+                                            data-sem="${sIdx}" data-course="${cIdx}" data-topic="${tIdx}"
+                                            ${topic.completed ? 'checked' : ''}>
+                                        <label for="${topicId}" class="topic-label ${topic.completed ? 'completed' : ''}">
+                                            ${topic.name}
+                                        </label>
+                                    </div>
+                                `;
+                            });
+                            html += `</div>`;
+                        }
+                        
+                        if (course.project_idea) {
+                            html += `
+                                <div class="project-box">
+                                    <h4>Hands-On Project</h4>
+                                    <p>${course.project_idea}</p>
+                                </div>
+                            `;
+                        }
+                        
+                        html += `</div>`;
+                    });
+                    
+                    html += `</div>`;
+                });
+            }
+            
+            if (curriculum.capstone_project) {
+                html += `
+                    <div class="capstone-section">
+                        <h2>Capstone Project</h2>
+                        <p>${curriculum.capstone_project}</p>
+                    </div>
+                `;
+            }
+            
+            resultContent.innerHTML = html;
+            
+            // Setup checkbox event listeners
+            document.querySelectorAll('.topic-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const s = parseInt(this.dataset.sem);
+                    const c = parseInt(this.dataset.course);
+                    const t = parseInt(this.dataset.topic);
+                    
+                    if (currentCurriculum.semesters[s]?.courses[c]?.topics[t]) {
+                        currentCurriculum.semesters[s].courses[c].topics[t].completed = this.checked;
+                        
+                        const label = this.nextElementSibling;
+                        if (label) {
+                            label.classList.toggle('completed', this.checked);
+                        }
+                        
+                        saveProgress();
+                        updateProgress();
+                    }
+                });
+            });
+        }
+
+        // Update progress display
+        function updateProgress() {
+            if (!currentCurriculum) return;
+            
+            let total = 0, completed = 0;
+            currentCurriculum.semesters.forEach(semester => {
+                semester.courses.forEach(course => {
+                    if (course.topics) {
+                        total += course.topics.length;
+                        completed += course.topics.filter(t => t.completed).length;
+                    }
+                });
+            });
+            
+            const percent = total ? Math.round((completed / total) * 100) : 0;
+            progressFill.style.width = `${percent}%`;
+            progressCount.textContent = `${completed}/${total}`;
+            progressLabel.textContent = `topics completed (${percent}%)`;
+            downloadBtn.disabled = false;
+        }
+
+        // Save progress to localStorage
+        function saveProgress() {
+            if (!currentCurriculum) return;
+            const key = `${STORAGE_KEY_PREFIX}${currentCurriculum.program_title.replace(/\s+/g, '_')}`;
+            localStorage.setItem(key, JSON.stringify(currentCurriculum));
+        }
+
+        // Show error message
+        function showError(message) {
+            resultContent.innerHTML = `
+                <div class="error-box">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Curriculum Generation Failed</h3>
+                    <p>${message}</p>
+                    <p style="margin-top:20px;font-weight:500;"><i class="fas fa-lightbulb"></i> Troubleshooting Tips:</p>
+                    <ul>
+                        <li>Ensure Flask server is running (<code>python backend/app.py</code>)</li>
+                        <li>Verify Ollama is running in background (🦙 icon in system tray)</li>
+                        <li>Check browser console (F12) for detailed error messages</li>
+                        <li>Try reducing semesters to 1 for faster generation</li>
+                        <li>Restart Flask server if issues persist</li>
+                    </ul>
+                </div>
+            `;
+            progressSection.classList.remove('active');
+        }
+downloadBtn.addEventListener('click', async () => {
+    if (!currentCurriculum) {
+        alert('❌ No curriculum to download. Please generate one first!');
+        return;
+    }
+    
+    // Show loading state
+    const originalText = downloadBtn.innerHTML;
+    downloadBtn.disabled = true;
+    downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing PDF...';
+    
+    try {
+        // Create clean copy for PDF (convert topics to strings)
+        const pdfCurriculum = JSON.parse(JSON.stringify(currentCurriculum));
+        
+        // Ensure topics are strings for PDF generation
+        pdfCurriculum.semesters.forEach(semester => {
+            semester.courses.forEach(course => {
+                if (Array.isArray(course.topics)) {
+                    course.topics = course.topics.map(t => 
+                        (typeof t === 'object' && t.name) ? t.name : String(t)
+                    );
+                }
+            });
+        });
+        
+        // Real-time download with proper error handling
+        const response = await fetch('http://localhost:5000/api/download-pdf', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ curriculum: pdfCurriculum })
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Server error (${response.status}): ${errorText}`);
+        }
+        
+        // Get filename from Content-Disposition header or generate fallback
+        let filename = `Curriculum_${pdfCurriculum.program_title.replace(/\s+/g, '_')}.pdf`;
+        const disposition = response.headers.get('Content-Disposition');
+        if (disposition && disposition.includes('filename=')) {
+            filename = disposition.split('filename=')[1].replace(/["']/g, '');
+        }
+        
+        // Trigger immediate download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        
+        // Cleanup
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        // Success feedback
+        downloadBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+        downloadBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        setTimeout(() => {
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.style.background = '';
+            downloadBtn.disabled = false;
+        }, 2000);
+        
+        console.log(`✓ PDF downloaded: ${filename}`);
+        
+    } catch (error) {
+        console.error('PDF download failed:', error);
+        alert(`❌ PDF download failed:\n${error.message}\n\nCheck Flask console for details.`);
+        downloadBtn.innerHTML = originalText;
+        downloadBtn.disabled = false;
+    }
+});
+        
+        // Auto-generate on first visit
+        setTimeout(() => {
+            if (!localStorage.getItem('curriculum_visited')) {
+                localStorage.setItem('curriculum_visited', 'true');
+                document.getElementById('generateBtn').click();
+            }
+        }, 1200);
+    </script>
+</body>
+</html>

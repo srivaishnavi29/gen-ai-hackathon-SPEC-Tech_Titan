@@ -1,0 +1,80 @@
+RAW RESPONSE:
+{
+  "program_title": "Machine Learning Engineering with Industry Focus",
+  "overview": "Learn to design, develop, and deploy scalable machine learning models in industry-focused applications.",
+  "weeks": [
+    {
+      "week": 1,
+      "topics": ["Introduction to Machine Learning", "Python Basics"],
+      "learning_objectives": ["Understand the basics of machine learning", "Master Python programming skills"],
+      "mini_project": "Develop a simple chatbot using natural language processing"
+    },
+    {
+      "week": 2,
+      "topics": [" supervised and unsupervised learning", "Data Preprocessing Techniques"],
+      "learning_objectives": ["Learn supervised and unsupervised machine learning algorithms", "Master data preprocessing techniques"],
+      "mini_project": "Build a binary classification model using popular algorithms"
+    },
+    {
+      "week": 3,
+      "topics": ["Deep Learning Fundamentals", "Neural Networks"],
+      "learning_objectives": ["Understand deep learning concepts", "Learn neural network architectures"],
+      "mini_project": "Develop a convolutional neural network for image classification"
+    },
+    {
+      "week": 4,
+      "topics": ["Reinforcement Learning", "Transfer Learning"],
+      "learning_objectives": ["Learn reinforcement learning algorithms", "Master transfer learning techniques"],
+      "mini_project": "Implement a reinforcement learning model for game playing"
+    },
+    {
+      "week": 5,
+      "topics": ["Cloud Computing and AI Services", "Big Data Analytics"],
+      "learning_objectives": ["Understand cloud computing for machine learning", "Learn big data analytics concepts"],
+      "mini_project": "Deploy a machine learning model on AWS SageMaker"
+    },
+    {
+      "week": 6,
+      "topics": ["Model Evaluation and Selection", "Hyperparameter Tuning"],
+      "learning_objectives": ["Learn model evaluation metrics", "Master hyperparameter tuning techniques"],
+      "mini_project": "Evaluate and tune the performance of a machine learning model"
+    },
+    {
+      "week": 7,
+      "topics": ["Explainable AI and Fairness", "Adversarial Attacks"],
+      "learning_objectives": ["Understand explainable AI concepts", "Learn about adversarial attacks"],
+      "mini_project": "Develop an explainable AI model for a real-world application"
+    },
+    {
+      "week": 8,
+      "topics": ["Computer Vision and Natural Language Processing"],
+      "learning_objectives": ["Learn computer vision concepts", "Master natural language processing techniques"],
+      "mini_project": "Develop a computer vision model for image classification"
+    },
+    {
+      "week": 9,
+      "topics": ["Robotics and IoT Integration", "Real-time Systems"],
+      "learning_objectives": ["Understand robotics and IoT integration", "Learn real-time systems concepts"],
+      "mini_project": "Integrate machine learning with robotics using ROS"
+    },
+    {
+      "week": 10,
+      "topics": ["Security and Ethics in AI", "Communication and Collaboration"],
+      "learning_objectives": ["Learn about AI security and ethics", "Master communication and collaboration skills"],
+      "mini_project": "Develop a secure machine learning model for sensitive data"
+    },
+    {
+      "week": 11,
+      "topics": ["Final Project Preparation", "Review and Revision"],
+      "learning_objectives": ["Prepare for the final project", "Review and revise course material"],
+      "mini_project": ""
+    },
+    {
+      "week": 12,
+      "topics": "Capstone Project Presentations",
+      "learning_objectives": "Present capstone projects to industry experts",
+      "mini_project": "Develop a scalable machine learning model for real-world application"
+    }
+  ],
+  "final_project": "Design and deploy a large-scale machine learning system using a combination of techniques learned throughout the program" }
+
